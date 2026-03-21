@@ -33,7 +33,7 @@ def load_my_model():
 model = load_my_model()
 
 # 3. Class Names
-class_names = ['Common Rust', 'Gray Leaf Spot', 'Northern Leaf Blight', 'Healthy']
+class_names = ['Common Rust', 'Gray Leaf Spot', 'Healthy', 'Northern Leaf Blight']
 
 # 4. Scanner & File Uploader
 st.subheader("📸 Scan a Maize Leaf")
