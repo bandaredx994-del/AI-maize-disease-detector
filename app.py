@@ -125,4 +125,3 @@ st.sidebar.write("📲 **Scan to open this app on your phone:**")
 app_url = "https://ai-maize-disease-detector-mlx5aeghpfapd5vyn3bl2a.streamlit.app/"
 qr_url = f"https://api.qrserver.com{app_url}"
 st.sidebar.image(qr_url)
-```
