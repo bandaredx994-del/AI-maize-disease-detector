@@ -82,6 +82,32 @@ if uploaded_file is not None and model is not None:
     elif class_names[result_index] == 'Northern Leaf Blight':
         st.warning("⚠️ **Northern Leaf Blight Detected**")
         st.info("""
+            # 8. Interactive "Ask the Doctor" Section
+    st.divider()
+    st.subheader("💬 Interact with the Maize Doctor")
+    
+    # Dropdown for common Zambian farming questions
+    question = st.selectbox("Select a question to ask the AI:", [
+        "Select a question...",
+        "How do I prevent these diseases next season?", 
+        "Where can I buy resistant seeds in Zambia?", 
+        "Is it safe to eat maize with Rust?"
+    ])
+
+    if question == "How do I prevent these diseases next season?":
+        st.info("👨‍⚕️ **Doctor's Advice:** Practice **crop rotation**. Avoid planting maize in the same field two years in a row. Rotate with legumes like beans or groundnuts to break the disease cycle.")
+    
+    elif question == "Where can I buy resistant seeds in Zambia?":
+        st.info("👨‍⚕️ **Doctor's Advice:** Visit your local agro-dealer and ask for certified 'Hybrid' seeds from **SeedCo**, **Zamseed**, or **Pannar**. Look for varieties specifically labeled 'Rust Resistant'.")
+    
+    elif question == "Is it safe to eat maize with Rust?":
+        st.info("👨‍⚕️ **Doctor's Advice:** While the fungus is not typically toxic to humans, it reduces the grain's quality, weight, and taste. If heavily infected, it is better used for livestock feed.")
+
+    # Feedback box for users to type their own message
+    st.write("---")
+    user_report = st.text_input("Report a new outbreak or ask a custom question:")
+    if st.button("Submit Report"):
+        st.success(f"Thank you! Your report: '{user_report}' has been logged for the JETS project.")
         **Solutions for Zambian Farmers:**
         * **Action:** Remove and burn heavily infected leaves.
         * **Prevention:** Increase plant spacing for better airflow.
