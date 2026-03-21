@@ -39,18 +39,30 @@ class_names = ['Common Rust', 'Gray Leaf Spot', 'Northern Leaf Blight', 'Healthy
 st.subheader("📸 Scan a Maize Leaf")
 option = st.radio("Choose how to provide a photo:", ("Use Camera Scanner", "Upload from Gallery"))
 
-if option == "Use Camera Scanner":
-    uploaded_file = st.camera_input("Point the camera at the leaf and take a photo")
-else:
-    uploaded_file = st.file_uploader("Choose a photo from your device...", type=["jpg", "png", "jpeg"])
+uploaded_file = None  # Start with nothing
 
-       # 5. Pre-processing (This MUST be indented with 4 spaces to work)
-    image = Image.open(uploaded_file).convert('RGB')
-    st.image(image, caption='Target Leaf Photo', use_container_width=True)
-    
-    img_resized = image.resize((224, 224))
-    img_array = np.array(img_resized) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
+if option == "Use Camera Scanner":
+    uploaded_file = st.camera_input("Point camera at the leaf")
+else:
+    uploaded_file = st.file_uploader("Choose a photo", type=["jpg", "png", "jpeg"])
+
+# 5. ONLY run this if a file was actually provided
+if uploaded_file is not None:
+    try:
+        # This is where 'image' gets its value
+        image = Image.open(uploaded_file).convert('RGB') 
+        st.image(image, caption='Target Leaf Photo', use_container_width=True)
+        
+        # Now it is safe to resize
+        img_resized = image.resize((224, 224))
+        img_array = np.array(img_resized) / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
+        
+        # --- Continue with your Prediction Logic (Step 6) here ---
+        
+    except Exception as e:
+        st.error(f"Error reading image: {e}")
+
  
 
     # 6. Prediction Logic
