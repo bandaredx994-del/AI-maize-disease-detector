@@ -61,6 +61,7 @@ if uploaded_file is not None and model is not None:
             prediction = model.predict(img_array)
             result_index = np.argmax(prediction)
             confidence = np.max(prediction) * 100
+            st.write(f"DEBUG - Raw AI Scores: {prediction}")
 
         # 7. Results & Solutions (Indented)
         st.subheader(f"Diagnosis: **{class_names[result_index]}**")
