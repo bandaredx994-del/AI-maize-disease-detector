@@ -85,30 +85,34 @@ if uploaded_file is not None and model is not None:
         * Increase plant spacing for better airflow.
         """)
 
-    # 8. Interactive "Ask the Doctor" Section (Now outside the quotes!)
+       # 8. Interactive "Ask the Doctor" Section (Now includes Pests!)
     st.divider()
     st.subheader("💬 Interact with the Maize Doctor")
     
     question = st.selectbox("Select a question to ask the AI:", [
         "Select a question...",
+        "How do I identify Fall Armyworm?",
+        "How do I identify Maize Stalk Borer?",
         "How do I prevent these diseases next season?", 
-        "Where can I buy resistant seeds in Zambia?", 
-        "Is it safe to eat maize with Rust?"
+        "Where can I buy resistant seeds in Zambia?"
     ])
 
-    if question == "How do I prevent these diseases next season?":
+    if question == "How do I identify Fall Armyworm?":
+        st.error("🐛 **Pest Alert: Fall Armyworm**")
+        st.info("👨‍⚕️ **Doctor's Advice:** Look for 'window-pane' holes in the leaves and sawdust-like waste (frass) in the funnel of the maize plant. Use pesticides like **Emamectin Benzoate** if found.")
+    
+    elif question == "How do I identify Maize Stalk Borer?":
+        st.error("🐛 **Pest Alert: Stalk Borer**")
+        st.info("👨‍⚕️ **Doctor's Advice:** Look for small holes in a straight line across the leaf. The worm tunnels into the stem, making the plant weak. Practice **Push-Pull technology** by planting Desmodium and Napier grass.")
+
+    elif question == "How do I prevent these diseases next season?":
         st.info("👨‍⚕️ **Doctor's Advice:** Practice **crop rotation**. Avoid planting maize in the same field two years in a row. Rotate with legumes like beans or groundnuts.")
     
     elif question == "Where can I buy resistant seeds in Zambia?":
         st.info("👨‍⚕️ **Doctor's Advice:** Visit an agro-dealer and ask for certified seeds from **SeedCo**, **Zamseed**, or **Pannar**.")
-    
-    elif question == "Is it safe to eat maize with Rust?":
-        st.info("👨‍⚕️ **Doctor's Advice:** While not usually toxic, it reduces quality and taste. Best used for livestock feed if heavily infected.")
 
     # Feedback box
     st.write("---")
-    user_report = st.text_input("Report an outbreak or ask a custom question:")
+    user_report = st.text_input("Report a pest outbreak or ask a question:")
     if st.button("Submit Report"):
         st.success(f"Thank you! Your report has been logged.")
-
-st.sidebar.info("Developed for the JETS Fair - Zambia")
