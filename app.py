@@ -44,11 +44,14 @@ if option == "Use Camera Scanner":
 else:
     uploaded_file = st.file_uploader("Choose a photo from your device...", type=["jpg", "png", "jpeg"])
 
+       # 5. Pre-processing (This MUST be indented with 4 spaces to work)
+    image = Image.open(uploaded_file).convert('RGB')
+    st.image(image, caption='Target Leaf Photo', use_container_width=True)
     
-    # 5. Pre-processing
     img_resized = image.resize((224, 224))
     img_array = np.array(img_resized) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
+ 
 
     # 6. Prediction Logic
     with st.spinner('AI is analyzing the leaf patterns...'):
