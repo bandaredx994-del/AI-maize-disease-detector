@@ -122,7 +122,7 @@ else:
 st.sidebar.markdown("---")
 st.sidebar.write("📲 **Scan to open this app:**")
 app_url = "https://ai-maize-disease-detector-mlx5aeghpfapd5vyn3bl2a.streamlit.app"
-qr_api = f"https://api.qrserver.com{app_url}"
+qr_api = f"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={app_url}"
 st.sidebar.image(qr_api)
 
 st.sidebar.info("Developed for the JETS Fair - Zambia")
