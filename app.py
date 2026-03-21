@@ -35,13 +35,15 @@ model = load_my_model()
 # 3. Class Names
 class_names = ['Common Rust', 'Gray Leaf Spot', 'Northern Leaf Blight', 'Healthy']
 
-# 4. File Uploader
-uploaded_file = st.file_uploader("Upload a leaf photo...", type=["jpg", "png", "jpeg"])
+# 4. Scanner & File Uploader
+st.subheader("📸 Scan a Maize Leaf")
+option = st.radio("Choose how to provide a photo:", ("Use Camera Scanner", "Upload from Gallery"))
 
-if uploaded_file is not None and model is not None:
-    # Display the image
-    image = Image.open(uploaded_file).convert('RGB')
-    st.image(image, caption='Target Leaf', use_container_width=True)
+if option == "Use Camera Scanner":
+    uploaded_file = st.camera_input("Point the camera at the leaf and take a photo")
+else:
+    uploaded_file = st.file_uploader("Choose a photo from your device...", type=["jpg", "png", "jpeg"])
+
     
     # 5. Pre-processing
     img_resized = image.resize((224, 224))
