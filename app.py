@@ -118,10 +118,12 @@ else:
     user_report = st.text_input("Report a pest outbreak or ask a question:")
     if st.button("Submit Report"):
         st.success(f"Thank you! Your report has been logged.")
-# Add a QR code to the sidebar so others can scan and open your app
+# 9. QR Code for JETS Judges (Sidebar)
 st.sidebar.markdown("---")
-st.sidebar.write("📲 **Scan to open this app on your phone:**")
-# Use a free API to generate the QR code for your specific URL
-app_url = "https://ai-maize-disease-detector-mlx5aeghpfapd5vyn3bl2a.streamlit.app/"
-qr_url = f"https://api.qrserver.com{app_url}"
-st.sidebar.image(qr_url)
+st.sidebar.write("📲 **Scan to open this app:**")
+app_url = "https://ai-maize-disease-detector-mlx5aeghpfapd5vyn3bl2a.streamlit.app"
+qr_api = f"https://api.qrserver.com{app_url}"
+st.sidebar.image(qr_api)
+
+st.sidebar.info("Developed for the JETS Fair - Zambia")
+
