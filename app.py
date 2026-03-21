@@ -56,7 +56,8 @@ if uploaded_file is not None and model is not None:
 
     # 7. Results & Solutions for JETS Zambia
     st.subheader(f"Diagnosis: **{class_names[result_index]}**")
-    st.write(f"Confidence Score: **{confidence:.2f}%**")if class_names[result_index] == 'Healthy':
+    st.write(f"Confidence Score: **{confidence:.2f}%**")
+    if class_names[result_index] == 'Healthy':
         st.success("✅ This plant is healthy! Continue standard care.")
     elif class_names[result_index] == 'Common Rust':
         st.warning("⚠️ **Common Rust Detected**")
