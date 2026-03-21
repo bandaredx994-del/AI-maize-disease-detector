@@ -126,9 +126,3 @@ app_url = "https://ai-maize-disease-detector-mlx5aeghpfapd5vyn3bl2a.streamlit.ap
 qr_url = f"https://api.qrserver.com{app_url}"
 st.sidebar.image(qr_url)
 ```
-
-### Final Check for GitHub:
-1.  Update the **`app.py`** with this new code and click **Commit**.
-2.  Your app will reboot and now have a **"Use Camera Scanner"** option!
-
-**Does the camera button show up on your phone when you open the app now?** 🌽📸🇿🇲🏆
