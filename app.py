@@ -54,37 +54,41 @@ if uploaded_file is not None and model is not None:
         result_index = np.argmax(prediction)
         confidence = np.max(prediction) * 100
 
-    # 7. Results & Solutions for JETS Zambia
+    # 7. Results & Solutions
     st.subheader(f"Diagnosis: **{class_names[result_index]}**")
     st.write(f"Confidence Score: **{confidence:.2f}%**")
+    
     if class_names[result_index] == 'Healthy':
         st.success("✅ This plant is healthy! Continue standard care.")
+    
     elif class_names[result_index] == 'Common Rust':
         st.warning("⚠️ **Common Rust Detected**")
         st.info("""
         **Solutions for Zambian Farmers:**
-        * **Action:** Apply fungicides (e.g., azoxystrobin) early.
-        * **Prevention:** Use rust-resistant seeds from SeedCo or Zamseed.
-        * **Tip:** Avoid overhead watering to stop spores from spreading.
+        * Apply fungicides (e.g., azoxystrobin) early.
+        * Use rust-resistant seeds from SeedCo or Zamseed.
         """)
 
     elif class_names[result_index] == 'Gray Leaf Spot':
         st.warning("⚠️ **Gray Leaf Spot Detected**")
         st.info("""
         **Solutions for Zambian Farmers:**
-        * **Action:** Rotate crops with beans or groundnuts.
-        * **Management:** Practice deep tillage to bury infected residue.
-        * **Chemical:** Apply fungicides before the silking stage.
+        * Rotate crops with beans or groundnuts.
+        * Practice deep tillage to bury infected residue.
         """)
 
     elif class_names[result_index] == 'Northern Leaf Blight':
         st.warning("⚠️ **Northern Leaf Blight Detected**")
         st.info("""
-            # 8. Interactive "Ask the Doctor" Section
+        **Solutions for Zambian Farmers:**
+        * Remove and burn heavily infected leaves.
+        * Increase plant spacing for better airflow.
+        """)
+
+    # 8. Interactive "Ask the Doctor" Section (Now outside the quotes!)
     st.divider()
     st.subheader("💬 Interact with the Maize Doctor")
     
-    # Dropdown for common Zambian farming questions
     question = st.selectbox("Select a question to ask the AI:", [
         "Select a question...",
         "How do I prevent these diseases next season?", 
@@ -93,23 +97,18 @@ if uploaded_file is not None and model is not None:
     ])
 
     if question == "How do I prevent these diseases next season?":
-        st.info("👨‍⚕️ **Doctor's Advice:** Practice **crop rotation**. Avoid planting maize in the same field two years in a row. Rotate with legumes like beans or groundnuts to break the disease cycle.")
+        st.info("👨‍⚕️ **Doctor's Advice:** Practice **crop rotation**. Avoid planting maize in the same field two years in a row. Rotate with legumes like beans or groundnuts.")
     
     elif question == "Where can I buy resistant seeds in Zambia?":
-        st.info("👨‍⚕️ **Doctor's Advice:** Visit your local agro-dealer and ask for certified 'Hybrid' seeds from **SeedCo**, **Zamseed**, or **Pannar**. Look for varieties specifically labeled 'Rust Resistant'.")
+        st.info("👨‍⚕️ **Doctor's Advice:** Visit an agro-dealer and ask for certified seeds from **SeedCo**, **Zamseed**, or **Pannar**.")
     
     elif question == "Is it safe to eat maize with Rust?":
-        st.info("👨‍⚕️ **Doctor's Advice:** While the fungus is not typically toxic to humans, it reduces the grain's quality, weight, and taste. If heavily infected, it is better used for livestock feed.")
+        st.info("👨‍⚕️ **Doctor's Advice:** While not usually toxic, it reduces quality and taste. Best used for livestock feed if heavily infected.")
 
-    # Feedback box for users to type their own message
+    # Feedback box
     st.write("---")
-    user_report = st.text_input("Report a new outbreak or ask a custom question:")
+    user_report = st.text_input("Report an outbreak or ask a custom question:")
     if st.button("Submit Report"):
-        st.success(f"Thank you! Your report: '{user_report}' has been logged for the JETS project.")
-        **Solutions for Zambian Farmers:**
-        * **Action:** Remove and burn heavily infected leaves.
-        * **Prevention:** Increase plant spacing for better airflow.
-        * **Tip:** Choose blight-tolerant hybrids for the next season.
-        """)
+        st.success(f"Thank you! Your report has been logged.")
 
 st.sidebar.info("Developed for the JETS Fair - Zambia")
