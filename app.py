@@ -118,3 +118,17 @@ else:
     user_report = st.text_input("Report a pest outbreak or ask a question:")
     if st.button("Submit Report"):
         st.success(f"Thank you! Your report has been logged.")
+# Add a QR code to the sidebar so others can scan and open your app
+st.sidebar.markdown("---")
+st.sidebar.write("📲 **Scan to open this app on your phone:**")
+# Use a free API to generate the QR code for your specific URL
+app_url = "https://ai-maize-disease-detector-mlx5aeghpfapd5vyn3bl2a.streamlit.app/"
+qr_url = f"https://api.qrserver.com{app_url}"
+st.sidebar.image(qr_url)
+```
+
+### Final Check for GitHub:
+1.  Update the **`app.py`** with this new code and click **Commit**.
+2.  Your app will reboot and now have a **"Use Camera Scanner"** option!
+
+**Does the camera button show up on your phone when you open the app now?** 🌽📸🇿🇲🏆
