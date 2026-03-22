@@ -16,7 +16,7 @@ This app uses a **97% accurate** Deep Learning model to identify maize diseases 
 
 # 2. Model Download from Google Drive
 FILE_ID = '17vu0TlrJBmoMvksYB62ufNA58WQRV6TZ'
-url = f'https://drive.google.com/uc?id={FILEID}'
+url = f'https://drive.google.com/uc?id={FILE_ID}'
 model_filename = 'maize_model.h5'
 
 @st.cache_resource
